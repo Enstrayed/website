@@ -1,16 +1,13 @@
 name: Apply commit on Hawthorne
-
 on:
   push:
     branches:
-      - main  # Adjust the branch name as needed
-
+      - main
 jobs:
-  git_pull:
-    runs-on: self-hosted  # Use your self-hosted runner label here
-
+  main:
+    runs-on: self-hosted
     steps:
-      - name: Run git pull
+      - name: Pull changes from GitHub
         working-directory: /data/ewww/enstrayedcom  # Specify the directory
         run: |
           git pull
