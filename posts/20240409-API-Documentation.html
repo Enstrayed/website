@@ -2,13 +2,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>api.enstrayed.com Documentation</title>
     <link rel="stylesheet" href="/static/posts.css">
+    <meta property="og:site_name" content="enstrayed.com">
+
+    <meta property="og:url" content="https://enstrayed.com/posts/20240409-API-Documentation.html">
+
+    <title>api.enstrayed.com Documentation</title>
+    <meta property="og:title" content="api.enstrayed.com Documentation">
+
+    <meta name="description" content="List of all endpoints and associated information for api.enstrayed.com.">
+    <meta property="og:description" content="List of all endpoints and associated information for api.enstrayed.com.">
+
 </head>
 <body>
     <a href="https://enstrayed.com">Return to enstrayed.com</a>
     <h1>api.enstrayed.com Documentation</h1>
-    <p>This page was last updated 2024-06-12.</p>
+    <p>This page was last updated 2024-06-16.</p>
     <p>All GET endpoints are read-only unless otherwise noted. Recommended to use CTRL+F to find the endpoint you're looking for since I didn't feel like setting up anchors.</p>
 
     <h3>Permalinks to this page:</h3>
@@ -20,9 +29,8 @@
 
     <hr>
 
-
     <h2>GET /</h2>
-    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/index.js#L27">../index.js:27</a>
+    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/index.js#L27">index.js:27</a>
     <p>Returns the commit the container is running in HTML format.</p>
 
     <h2>GET /blogposts</h2>
@@ -30,28 +38,34 @@
     <p>By default, this will return a JSON array with all of the blog posts on my website, however, if <code>?format=html</code> is used in the URL it will return the same but in HTML.</p>
     <p>The result will only include posts in the directory set in the servers config.json that match a naming convention.</p>
 
-    <h2>GET /cider</h2>
-    <p>⚠️NON FUNCTIONAL: Temporarily disabled due to issues with Docker containers not being able to communicate over Tailscale, this is pending a complete overhaul anyways.</p>
-    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/cider.js#L6">cider.js:6</a>
-    <p>Returns JSON with the details about the song I'm currently listening to on Cider. Will return code <code>503</code> if Cider isn't open or is unreachable.</p>
+    <h2><s>GET /cider</s></h2>
+    <p>Deprecated: Will be replaced by /nowplaying.</p>
 
-    <h2>POST /cider</h2>
-    <p>⚠️NON FUNCTIONAL: I got an Apple Music Family Plan so this isn't needed anymore, will likely be removed completely in the future.</p>
-    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/cider.js#L40">cider.js:40</a>
-    <p>Sends a Stop Playback command to Cider. Will return code <code>503</code> if Cider isn't open or is unreachable.</p>
-    <span>Required Headers:</span>
-    <ul>
-        <li><code>Authorization</code>: My API key, not yours, because I should be the only one using this.</li>
-    </ul>
+    <h2><s>POST /cider</s></h2>
+    <p>Deprecated: No longer in use.</p>
 
     <h2>GET /etyd</h2>
     <p>Internal use only: Requests to etyd.cc have their request rewritten to this endpoint.</p>
 
-    <h2>POST /etyd</h2>
-    <p>⚠️NON FUNCTIONAL: Endpoint will be available once the etyd-refactor branch is merged into main. If you want etyd.cc redirects added/updated please DM me.</p>
+    <h2>POST /etyd/*</h2>
+    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/etyd.js#L80">etyd.js:80</a>
+    <p>Creates a new redirect for etyd.cc. Replace * in the URL for the target (eg. etyd.cc/target), and urlValue in the body with the URL to be redirected to.</p>
+    <span>Required Headers:</span>
+    <ul>
+        <li><code>Authorization</code>: An API key for the <code>etyd</code> scope</li>
+    </ul>
+    <span>Required Body (JSON):</span>
+    <pre><code>{
+        "url": "urlValue"
+}</code></pre>
 
-    <h2>DELETE /etyd</h2>
-    <p>⚠️NON FUNCTIONAL: Endpoint will be available once the etyd-refactor branch is merged into main. If you want etyd.cc redirects added/updated please DM me.</p>
+    <h2>DELETE /etyd/*</h2>
+    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/etyd.js#L28">etyd.js:28</a>
+    <p>Deletes an existing redirect for etyd.cc. Replace * in the URL for the target (eg. etyd.cc/target)</p>
+    <span>Required Headers:</span>
+    <ul>
+        <li><code>Authorization</code>: An API key for the <code>etyd</code> scope</li>
+    </ul>
 
     <h2>GET /ip</h2>
     <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/ip.js#L3">ip.js:3</a>
@@ -63,11 +77,11 @@
 
     <h2>POST /sendemail</h2>
     <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/mailjet.js#L3">mailjet.js:3</a>
-    <p>Some text here.</p>
+    <p>Sends an email to the specified recipient, intended for application & automation use.</p>
 
     <span>Required Headers:</span>
     <ul>
-        <li><code>Authorization</code>: Your API Key</li>
+        <li><code>Authorization</code>: An API key for the <code>mailjet</code> scope</li>
     </ul>
     <span>Required Body (JSON):</span>
     <pre><code>{
