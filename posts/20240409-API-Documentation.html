@@ -38,11 +38,9 @@
     <p>By default, this will return a JSON array with all of the blog posts on my website, however, if <code>?format=html</code> is used in the URL it will return the same but in HTML.</p>
     <p>The result will only include posts in the directory set in the servers config.json that match a naming convention.</p>
 
-    <h2><s>GET /cider</s></h2>
-    <p>Deprecated: Will be replaced by /nowplaying.</p>
-
-    <h2><s>POST /cider</s></h2>
-    <p>Deprecated: No longer in use.</p>
+    <h2>GET /nowplaying</h2>
+    <a href="https://github.com/Enstrayed/enstrayedapi/blob/main/routes/nowplaying.js#L14">nowplaying.js:14</a>
+    <p>Returns whatever I'm listening to via the Last.fm API in JSON. If <code>?format=html</code> is used in the URL it will return the same but in HTML. If nothing is playing the JSON response will just have <code>"playing": false</code>.</p>
 
     <h2>GET /etyd</h2>
     <p>Internal use only: Requests to etyd.cc have their request rewritten to this endpoint.</p>
