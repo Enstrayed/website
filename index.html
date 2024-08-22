@@ -6,22 +6,22 @@
     <title>Enstrayed</title>
 
     <link rel="stylesheet" href="static/index.css">
-    <script src="static/calls.js"></script>
+    <script>
+        fetch("https://enstrayed.com/api/nowplaying?format=html").then(response => response.text()).then(response => {document.getElementById("nowplaying").innerHTML = response})
+    </script>
 </head>
 <body>
     <div class="flexcolumn fc_rowgap5em">
 
-        <!--Header and Subtitle-->
         <div>
             <h1 class="headertext">Enstrayed</h1>
             <span>Don't worry about me, I'll be <a href="https://www.youtube.com/watch?v=zsr4TWIVMx8">riding my bike to the end of the world.</a></span>
         </div>
     
-        <!--Links-->
         <div class="linkbox">
     
             <div class="flexcolumn textlist">
-                <h3>Online Profiles:</h3>
+                <h3>Online Profiles</h3>
                 <span>Discord: enstrayed</span>
                 <a href="https://twitter.com/enstrayed">Twitter</a>
                 <a href="https://bsky.app/profile/enstrayed.com">Bluesky</a>
@@ -30,7 +30,7 @@
             </div>
     
             <div class="flexcolumn textlist">
-                <h3>Resources:</h3>
+                <h3>Resources</h3>
                 <a href="posts/20240409-API-Documentation.html">Enstrayed API</a>
                 <a href="https://etyd.cc">etyd.cc URL Shortener</a>
                 <a href="https://cobalt.enstrayed.com">Cobalt Instance</a>
@@ -41,11 +41,15 @@
         </div>
 
         <div class="flexrow" id="nowplaying">
-
         </div>
 
         <div class="flexcolumn textlist" id="blogposts">
-            <h2 class="headertext">Blog Posts</h2>
+            <h2 class="headertext">Posts</h2>
+            <!--SSR_BLOGPOSTS-->
+        </div>
+
+        <div>
+            <!--SSR_APIVERSION-->
         </div>
 
     </div>

@@ -14,7 +14,7 @@ a, a:link {
 }
 
 a:hover {
-    color: #ff7f50;
+    color: #ff7a5d;
 }
 
 
@@ -35,6 +35,27 @@ pre code {
 hr {
     margin-top: 2em;
     margin-bottom: 2em;
+}
+
+h2 {
+    margin: 0;
+}
+
+.inlineheader {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.inlineheader > h2, a {
+    margin-right: 1rem;
+}
+
+.inlineheader > span {
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    color: white;
+    background-color: #f06445;
 }
 
 
