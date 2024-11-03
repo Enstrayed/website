@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enstrayed</title>
+
+    <link rel="stylesheet" href="static/index.css">
+    <script>
+        fetch("/api/nowplayingbeta?format=html").then(response => response.text()).then(response => {document.getElementById("nowplaying").innerHTML = response})
+    </script>
+</head>
+<body>
+    <div class="flexcolumn fc_rowgap5em">
+
+        <div>
+            <h1>Enstrayed</h1>
+            <span>Don't worry about me, I'll be <a href="https://www.youtube.com/watch?v=zsr4TWIVMx8">riding my bike to the end of the world.</a></span>
+        </div>
+    
+        <div class="flexrow">
+    
+            <div>
+                <h3>Online Profiles</h3>
+                <ul>
+                    <li>Discord: enstrayed</li>
+                    <li><a href="https://twitter.com/enstrayed">Twitter</a></li>
+                    <li><a href="https://bsky.app/profile/enstrayed.com">Bluesky</a></li>
+                    <li><a href="https://github.com/enstrayed">GitHub</a></li>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="posts/20240409-API-Documentation.html">Enstrayed API</a></li>
+                    <li><a href="https://etyd.cc">etyd.cc URL Shortener</a></li>
+                    <li><a href="https://cobalt.enstrayed.com">Cobalt Instance</a></li>
+                    <li><a href="https://downloads.enstrayed.com">Downloads</a></li>
+                </ul>
+            </div>
+    
+        </div>
+
+        <div class="flexrow" id="nowplaying">
+        </div>
+
+        <div>
+            <h2>Posts</h2>
+            <ul>
+                <!--SSR_BLOGPOSTS-->
+            </ul>
+            
+        </div>
+
+        <div>
+            <!--SSR_APIVERSION-->
+        </div>
+
+    </div>
+</body>
+</html>

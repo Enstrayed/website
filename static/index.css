@@ -12,13 +12,6 @@ body {
     padding: 6em 2em;
 }
 
-
-.linkbox {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
 .flexcolumn {
     display: flex;
     flex-direction: column;
@@ -32,37 +25,19 @@ body {
     gap: 2em;
 }
 
-.fc_rowgap5em {
-    row-gap: 2em;
-}
-
-.textlist h3 {
+h1, h2, h3, h4 {
     margin: 0;
     margin-bottom: 0.5em;
 }
 
-.textlist a {
-    margin-left: 1em;
-    margin-bottom: 0.5em;
-}
-
-.textlist span {
-    margin-left: 1em;
-    margin-bottom: 0.5em;
-}
-
-.textlist .noindent {
-    margin-left: 0;
-}
-
-.textlist p {
+ul {
+    list-style-type: none;
     margin: 0;
-    margin-bottom: 0.5em;
+    padding: 0;
 }
 
-.headertext {
-    margin: 0;
-    margin-bottom: 0.5em;
+ul > li {
+    padding-bottom: 0.5em;
 }
 
 a, a:link {
